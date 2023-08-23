@@ -1,0 +1,19 @@
+{
+  "include": ["./src/*"],
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["ES2019", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "declaration": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "useUnknownInCatchVariables": false,
+    "typeRoots": ["./types", "./node_modules/@types"]
+  },
+  "types": ["jest"]
+}
