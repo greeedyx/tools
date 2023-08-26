@@ -47,13 +47,7 @@ function debounce(fn, ms) {
         if (timer) {
             clearTimeout(timer);
         }
-        else {
-            timer = setTimeout(function () {
-                fn.apply(void 0, __spreadArray([], __read(args), false));
-                timer && clearTimeout(timer);
-                timer = null;
-            }, ms);
-        }
+        timer = setTimeout.apply(void 0, __spreadArray([fn, ms], __read(args), false));
     };
 }
 function throttle(fn, ms) {
