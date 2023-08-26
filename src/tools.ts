@@ -49,13 +49,8 @@ export function debounce<Args extends any[]>(fn: (...s: Args) => any, ms: number
   return function (...args: Args) {
     if (timer) {
       clearTimeout(timer)
-    } else {
-      timer = setTimeout(() => {
-        fn(...args);
-        timer && clearTimeout(timer);
-        timer = null;
-      }, ms);
     }
+    timer = setTimeout(fn, ms, ...args);
   }
 }
 
