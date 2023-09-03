@@ -1,17 +1,17 @@
-# greeedyx/tools
+# greedyx/tools
 
 JavaScript 简易工具库
 
 ## 安装
 
 ```shell
-npm install greeedyx/tools
+npm install greedyx/tools
 ```
 
 ## 使用
 
 ```
-import { sleep, isBlank, isEmpty } from '@greeedyx/tools';
+import { sleep, isBlank, isEmpty } from '@greedyx/tools';
 
 sleep(1000).then(() => {
   console.log('1s later');
