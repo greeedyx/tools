@@ -50,7 +50,12 @@ export function debounce<Args extends any[]>(fn: (...s: Args) => any, ms: number
     if (timer) {
       clearTimeout(timer)
     }
-    timer = setTimeout(fn, ms, ...args);
+    timer = setTimeout(() => {
+      // @ts-ignore
+      fn.apply(this, args);
+      timer && clearTimeout(timer);
+      timer = null;
+    }, ms);
   }
 }
 
@@ -60,7 +65,8 @@ export function throttle<Args extends any[]>(fn: (...s: Args) => any, ms: number
   return function (...args: Args) {
     if (!timer) {
       timer = setTimeout(() => {
-        fn(...args);
+        // @ts-ignore
+        fn.apply(this, args);
         timer && clearTimeout(timer);
         timer = null;
       }, ms);
@@ -131,5 +137,4 @@ export function sequenceExec<T extends Promise<any>>(ps: ((...args: any[]) => T)
   }
   return pro;
 }
-
 

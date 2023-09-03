@@ -1,4 +1,4 @@
-import { a as __spreadArray, _ as __read, b as __values } from './tslib.es6-86caa7c8.js';
+import { b as __values } from './tslib.es6-86caa7c8.js';
 
 function sleep(ms) {
     positiveCheck(ms);
@@ -40,6 +40,7 @@ function debounce(fn, ms) {
     positiveCheck(ms);
     var timer;
     return function () {
+        var _this = this;
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
@@ -47,7 +48,12 @@ function debounce(fn, ms) {
         if (timer) {
             clearTimeout(timer);
         }
-        timer = setTimeout.apply(void 0, __spreadArray([fn, ms], __read(args), false));
+        timer = setTimeout(function () {
+            // @ts-ignore
+            fn.apply(_this, args);
+            timer && clearTimeout(timer);
+            timer = null;
+        }, ms);
     };
 }
 function throttle(fn, ms) {
@@ -55,13 +61,15 @@ function throttle(fn, ms) {
     positiveCheck(ms);
     var timer;
     return function () {
+        var _this = this;
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
         }
         if (!timer) {
             timer = setTimeout(function () {
-                fn.apply(void 0, __spreadArray([], __read(args), false));
+                // @ts-ignore
+                fn.apply(_this, args);
                 timer && clearTimeout(timer);
                 timer = null;
             }, ms);
