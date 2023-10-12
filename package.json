@@ -1,10 +1,16 @@
 {
   "name": "@greedyx/tools",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "实用简易工具函数库",
   "main": "dist/index.js",
   "module": "esm/index.js",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./esm/index.js",
+      "require": "./dist/index.js"
+    }
+  },
   "scripts": {
     "dev": "rimraf dist && rollup -c -w",
     "build": "rimraf dist && rollup -c rollup.config.js && rollup -c rollup.esm.js"
