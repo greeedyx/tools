@@ -5,6 +5,8 @@
     "lib": ["ES2019", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "node",
+    "declarationDir": "dist",
+    "emitDeclarationOnly": true,
     "strict": true,
     "declaration": true,
     "downlevelIteration": true,

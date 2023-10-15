@@ -137,4 +137,3 @@ export function sequenceExec<T extends Promise<any>>(ps: ((...args: any[]) => T)
   }
   return pro;
 }
-

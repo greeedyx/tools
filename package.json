@@ -2,18 +2,21 @@
   "name": "@greedyx/tools",
   "version": "1.0.1",
   "description": "实用简易工具函数库",
-  "main": "dist/index.js",
-  "module": "esm/index.js",
+  "main": "./dist/index.min.cjs",
   "type": "module",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./esm/index.js",
-      "require": "./dist/index.js"
+      "default": "./dist/index.min.cjs",
+      "import": "./dist/esm/index.js",
+      "types": "./dist/index.d.ts"
     }
   },
   "scripts": {
     "dev": "rimraf dist && rollup -c -w",
-    "build": "rimraf dist && rollup -c rollup.config.js && rollup -c rollup.esm.js"
+    "prebuild": "rimraf dist esm types",
+    "build": "tsc && rollup -c"
   },
   "keywords": [],
   "author": "",

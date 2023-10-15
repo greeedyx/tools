@@ -1,9 +1,8 @@
-import Subject from './subject';
-import TaskQueue from './task';
+export * from './subject';
+export * from './task';
 export * from './tools';
 import { sleep, isBlank, isArray, isEmpty, isObject, isFunction, debounce, throttle, underline, camel, sequenceExec } from './tools';
-export { Subject, TaskQueue };
-declare const _default: {
+declare const Tools: {
     sleep: typeof sleep;
     isBlank: typeof isBlank;
     isArray: typeof isArray;
@@ -16,4 +15,4 @@ declare const _default: {
     camel: typeof camel;
     sequenceExec: typeof sequenceExec;
 };
-export default _default;
+export default Tools;

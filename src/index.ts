@@ -1,5 +1,5 @@
-import Subject from './subject';
-import TaskQueue from './task';
+export * from './subject';
+export * from './task';
 export * from './tools';
 
 import {
@@ -16,12 +16,8 @@ import {
   sequenceExec
 } from './tools';
 
-export {
-  Subject,
-  TaskQueue
-}
 
-export default {
+const Tools = {
   sleep,
   isBlank,
   isArray,
@@ -34,3 +30,6 @@ export default {
   camel,
   sequenceExec
 }
+
+
+export default Tools;

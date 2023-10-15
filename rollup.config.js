@@ -1,8 +1,37 @@
 import babel from "@rollup/plugin-babel";
+import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
+import { defineConfig } from 'rollup';
 import terser from '@rollup/plugin-terser';
 
-export default [{
+const cjs = defineConfig({
+  input: 'src/index.ts',
+  plugins: [
+    typescript({
+      declarationDir: 'dist'
+    }),
+    commonjs(),
+    babel({
+      configFile: 'babel.config.js',
+      babelHelpers: 'bundled',
+      exclude: 'node_modules/**'
+    }),
+  ],
+  output: [
+    {
+      file: 'dist/index.cjs',
+      format: 'cjs'
+    },
+    {
+      file: 'dist/index.min.cjs',
+      format: 'cjs',
+      plugins: [terser({ maxWorkers: 4 })]
+    }
+  ]
+})
+
+
+const esm = defineConfig({
   input: {
     index: 'src/index.ts',
     task: 'src/task.ts',
@@ -10,16 +39,19 @@ export default [{
     tools: 'src/tools.ts'
   },
   plugins: [
-    typescript({ declarationDir: 'dist' }),
+    typescript({
+      declarationDir: 'dist/esm'
+    }),
     babel({
       configFile: 'babel.config.js',
       babelHelpers: 'bundled',
       exclude: 'node_modules/**'
     }),
-    terser({ maxWorkers: 4 })
   ],
-  output: {
-    dir: 'dist',
-    format: 'cjs'
-  }
-}]
+  output: [
+    { dir: 'dist/esm', format: 'es', exports: 'named' }
+  ]
+})
+
+export default [cjs, esm];
+
