@@ -43,6 +43,11 @@ export function isFunction(v: any) {
 export function isArray(v: any) {
   return Object.prototype.toString.call(v) === "[object Array]";
 }
+
+export function isPromise(obj: any) {
+  return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
+}
+
 export function debounce<Args extends any[]>(fn: (...s: Args) => any, ms: number = 500) {
   positiveCheck(ms);
   let timer: NodeJS.Timeout | null;
@@ -136,4 +141,30 @@ export function sequenceExec<T extends Promise<any>>(ps: ((...args: any[]) => T)
     });
   }
   return pro;
+}
+
+export type SettleSuccess = { status: 'fulfilled', value: any };
+export type SettleFailed = { status: 'rejected', reason: any };
+export type SettleResult = SettleSuccess | SettleFailed;
+
+export function allSettled(ps: Promise<any>[]): Promise<SettleResult[]> {
+  const results: SettleResult[] = [];
+  const counter = new Map<number, number>();
+  const size = ps.length;
+  return new Promise((resolve) => {
+    for (let index = 0; index < size; index++) {
+      const it = ps[index];
+      it.then((result) => {
+        results[index] = { status: 'fulfilled', value: result };
+      }).catch((e) => {
+        results[index] = { status: 'rejected', reason: e };
+      }).finally(() => {
+        counter.set(index, 1);
+        if (counter.size === ps.length) {
+          resolve(results)
+        }
+      })
+    }
+  })
+
 }

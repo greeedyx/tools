@@ -4,19 +4,21 @@ export default class TaskQueue {
     private _finishCount;
     private _taskArray;
     private onFinishing;
-    private onProcessing;
+    private onEvering;
+    private onSuccessing;
     private onErroring;
     constructor(threadNum?: number);
     get totalCount(): number;
     get finishCount(): number;
-    get progress(): string | 0;
-    add<T>(task: () => Promise<any>): this;
-    addMany(tasks: (() => Promise<any>)[]): this;
+    get progress(): string;
+    add<T>(task: () => any): this;
+    addMany(tasks: (() => any)[]): this;
     run(): void;
     private shiftElements;
     private execute;
     onFinish(fn: Function): this;
-    onProcess(fn: Function): this;
+    onSuccess(fn: Function): this;
+    onEvery(fn: Function): this;
     onError(fn: Function): this;
     reset(): this;
 }

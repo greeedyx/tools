@@ -20,11 +20,13 @@ const cjs = defineConfig({
   output: [
     {
       file: 'dist/index.cjs',
-      format: 'cjs'
+      format: 'cjs',
+      exports: 'named'
     },
     {
       file: 'dist/index.min.cjs',
       format: 'cjs',
+      exports: 'named',
       plugins: [terser({ maxWorkers: 4 })]
     }
   ]

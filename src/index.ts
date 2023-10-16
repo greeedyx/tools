@@ -1,6 +1,7 @@
-export * from './subject';
-export * from './task';
+import Subject from './subject';
+import TaskQueue from './task';
 export * from './tools';
+export { Subject, TaskQueue };
 
 import {
   sleep,
@@ -9,11 +10,13 @@ import {
   isEmpty,
   isObject,
   isFunction,
+  isPromise,
   debounce,
   throttle,
   underline,
   camel,
-  sequenceExec
+  sequenceExec,
+  allSettled
 } from './tools';
 
 
@@ -24,11 +27,15 @@ const Tools = {
   isEmpty,
   isObject,
   isFunction,
+  isPromise,
   debounce,
   throttle,
   underline,
   camel,
-  sequenceExec
+  sequenceExec,
+  allSettled,
+  Subject,
+  TaskQueue
 }
 
 

@@ -1,7 +1,8 @@
-export * from './subject';
-export * from './task';
+import Subject from './subject';
+import TaskQueue from './task';
 export * from './tools';
-import { sleep, isBlank, isArray, isEmpty, isObject, isFunction, debounce, throttle, underline, camel, sequenceExec } from './tools';
+export { Subject, TaskQueue };
+import { sleep, isBlank, isArray, isEmpty, isObject, isFunction, isPromise, debounce, throttle, underline, camel, sequenceExec, allSettled } from './tools';
 declare const Tools: {
     sleep: typeof sleep;
     isBlank: typeof isBlank;
@@ -9,10 +10,14 @@ declare const Tools: {
     isEmpty: typeof isEmpty;
     isObject: typeof isObject;
     isFunction: typeof isFunction;
+    isPromise: typeof isPromise;
     debounce: typeof debounce;
     throttle: typeof throttle;
     underline: typeof underline;
     camel: typeof camel;
     sequenceExec: typeof sequenceExec;
+    allSettled: typeof allSettled;
+    Subject: typeof Subject;
+    TaskQueue: typeof TaskQueue;
 };
 export default Tools;
