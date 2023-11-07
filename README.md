@@ -70,6 +70,16 @@ export declare function underline<T>(o: Array<T>): Array<T>;
 export declare function camel(o: string): string;
 export declare function camel(o: Props): Props;
 export declare function camel<T>(o: Array<T>): Array<T>;
+// 条件等待，满足表达式func后resolve
+export declare function waitUntil<T>(func: Function, options?: {
+    interval?: number; // 检查条件是否满足的最小时间间隔
+    maxWait?: number;  // 最大超时时间, 若为负数或0则无限等待直到满足表达式func
+    data?: T;          // 返回的数据
+}): Promise<T|undefined>;
+// 解析json，会捕获异常，默认值为参数d
+export declare function parseJson(val: string, d?: any): any;
+// 将json字符串化，默认值为空字符串
+export declare function stringfyJson(val: Object, d?: '' | null): string | null;
 // 将多个返回值是Promise的函数任务顺序执行
 export declare function sequenceExec<T extends Promise<any>>(
   ps: ((...args: any[]) => T)[]

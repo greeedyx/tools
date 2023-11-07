@@ -17,6 +17,13 @@ export declare function camel(o: string): string;
 export declare function camel(o: Props): Props;
 export declare function camel<T>(o: Array<T>): Array<T>;
 export declare function sequenceExec<T extends Promise<any>>(ps: ((...args: any[]) => T)[]): Promise<any[]>;
+export declare function waitUntil<T>(func: Function, options?: {
+    interval?: number;
+    maxWait?: number;
+    data?: T;
+}): Promise<T | undefined>;
+export declare function parseJson(val: string, d?: any): any;
+export declare function stringfyJson(val: Object, d?: '' | null): string | null;
 export type SettleSuccess = {
     status: 'fulfilled';
     value: any;

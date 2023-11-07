@@ -143,6 +143,43 @@ export function sequenceExec<T extends Promise<any>>(ps: ((...args: any[]) => T)
   return pro;
 }
 
+export function waitUntil<T>(func: Function, options: {
+  interval?: number;
+  maxWait?: number;
+  data?: T;
+} = {}): Promise<T | undefined> {
+  return new Promise((resolve) => {
+    const { interval = 100, maxWait = -1, data } = options;
+    const condition = (() => maxWait > 0 ? () => times <= 0 : () => false)();
+    let times = Math.ceil(maxWait / interval);
+    const timer = setInterval(() => {
+      if (func() || condition()) {
+        clearInterval(timer);
+        resolve(data);
+      }
+      times--;
+    }, interval);
+  });
+}
+
+export function parseJson(val: string, d: any = {}) {
+  try {
+    return JSON.parse(val);
+  } catch (e) {
+    return d;
+  }
+}
+
+export function stringfyJson(val: Object, d: '' | null = '') {
+  if (isEmpty(val)) {
+    return d;
+  }
+  if (isArray(val) || isObject(val)) {
+    return JSON.stringify(val);
+  }
+  return String(val);
+}
+
 export type SettleSuccess = { status: 'fulfilled', value: any };
 export type SettleFailed = { status: 'rejected', reason: any };
 export type SettleResult = SettleSuccess | SettleFailed;
