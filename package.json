@@ -1,9 +1,8 @@
 {
   "name": "@greedyx/tools",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "实用简易工具函数库",
   "main": "./dist/index.min.cjs",
-  "type": "module",
   "module": "./dist/esm/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
