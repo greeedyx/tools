@@ -1,4 +1,5 @@
-import { allSettled, isFunction, isPromise } from "./tools";
+import { isFunction, isPromise } from "./judge";
+import { allSettled } from "./promise";
 
 export default class TaskQueue {
 

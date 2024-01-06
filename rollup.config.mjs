@@ -17,6 +17,7 @@ const cjs = defineConfig({
       exclude: 'node_modules/**'
     }),
   ],
+  external: ['clone'],
   output: [
     {
       file: 'dist/index.cjs',
@@ -37,8 +38,7 @@ const esm = defineConfig({
   input: {
     index: 'src/index.ts',
     task: 'src/task.ts',
-    subject: 'src/subject.ts',
-    tools: 'src/tools.ts'
+    subject: 'src/subject.ts'
   },
   plugins: [
     typescript({
@@ -50,6 +50,7 @@ const esm = defineConfig({
       exclude: 'node_modules/**'
     }),
   ],
+  external: ['clone'],
   output: [
     { dir: 'dist/esm', format: 'es', exports: 'named' }
   ]

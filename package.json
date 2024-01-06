@@ -1,6 +1,6 @@
 {
   "name": "@greedyx/tools",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "实用简易工具函数库",
   "main": "./dist/index.min.cjs",
   "module": "./dist/esm/index.js",
@@ -42,7 +42,7 @@
     "tslib": "^2.6.1",
     "typescript": "^5.1.6"
   },
-  "dependencies": {
+  "peerDependencies": {
     "clone": "^2.1.2"
   }
 }
