@@ -38,7 +38,9 @@ const esm = defineConfig({
   input: {
     index: 'src/index.ts',
     task: 'src/task.ts',
-    subject: 'src/subject.ts'
+    subject: 'src/subject.ts',
+    retry: 'src/retry.ts',
+    queue: 'src/queue.ts'
   },
   plugins: [
     typescript({

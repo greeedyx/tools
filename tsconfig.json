@@ -1,5 +1,5 @@
 {
-  "include": ["./src/*"],
+  "include": ["./src/*", "test/test.js"],
   "compilerOptions": {
     "target": "es5",
     "lib": ["ES2019", "ESNext"],

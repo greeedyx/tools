@@ -1,6 +1,6 @@
 {
   "name": "@greedyx/tools",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "实用简易工具函数库",
   "main": "./dist/index.min.cjs",
   "module": "./dist/esm/index.js",
