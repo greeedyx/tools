@@ -13,7 +13,7 @@ interface RetryOptions<T> {
  * @returns 返回一个Promise，它将在操作成功时解析结果，或者在操作失败且没有剩余重试次数时拒绝
  */
 export default function retry<T>(opts: RetryOptions<T>): Promise<T> {
-  const { delay = 0, times, executor, logger = console.log } = opts;
+  const { delay = 0, times, executor, logger = console.log.bind(console) } = opts;
   if (typeof executor !== 'function') {
     return Promise.reject(new Error('executor must be a function'));
   }

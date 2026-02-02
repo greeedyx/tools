@@ -17,7 +17,6 @@ const cjs = defineConfig({
       exclude: 'node_modules/**'
     }),
   ],
-  external: ['clone'],
   output: [
     {
       file: 'dist/index.cjs',
@@ -52,7 +51,6 @@ const esm = defineConfig({
       exclude: 'node_modules/**'
     }),
   ],
-  external: ['clone'],
   output: [
     { dir: 'dist/esm', format: 'es', exports: 'named' }
   ]
